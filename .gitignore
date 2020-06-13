@@ -19,3 +19,4 @@ JavaRecord.java
 JavaSqlNetworkWordCount.java
 JavaStructuredNetworkWordCount.java
 SparkElasticsearch_old.java
+OnlineStore_old.java

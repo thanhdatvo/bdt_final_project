@@ -19,7 +19,7 @@ import org.apache.spark.sql.SparkSession;
  * sql.streaming.JavaStructuredNetworkOnlineStoreCount localhost 9999`
  */
 public final class SparkElasticsearch {
-	
+
 	public static void main(String[] args) throws Exception {
 		if (args.length < 2) {
 			System.err.println("Usage: JavaStructuredNetworkOnlineStoreCount <hostname> <port>");
@@ -31,11 +31,10 @@ public final class SparkElasticsearch {
 
 		SparkSession spark = SparkSession.builder().appName("JavaStructuredNetworkOnlineStoreCount").master("local[*]")
 				.config("es.index.auto.create", "true").config("es.nodes.wan.only", "true")
-				.config("es.nodes.wan.only", "true")
-				.config("es.nodes", "localhost").config("es.port", "9200").getOrCreate();
+				.config("es.nodes.wan.only", "true").config("es.nodes", "localhost").config("es.port", "9200")
+				.getOrCreate();
 
 		spark.sparkContext().setLogLevel("ERROR");
-
 
 		Dataset<Row> lines = spark.readStream().format("socket").option("host", host).option("port", port).load();
 
@@ -43,16 +42,12 @@ public final class SparkElasticsearch {
 
 		Dataset<OnlineStore> onlineStoreData = lines.as(Encoders.STRING()).map((MapFunction<String, OnlineStore>) x -> {
 			String[] properties = x.split(",");
-			return new OnlineStore(properties[0]
-					, 
-					properties[1], properties[2], properties[3], properties[4],
-					properties[5], properties[6], properties[7], properties[8]
-							);
+			return new OnlineStore(properties[0], properties[1], properties[2], properties[3], properties[4],
+					properties[5], properties[6], properties[7], properties[8]);
 		}, onlineStoreEncoder);
-		
-		onlineStoreData.writeStream()
-		.format("org.elasticsearch.spark.sql")
-				.option("checkpointLocation", "/home/checkpointLocation7").start("online_stores/_doc")
+
+		onlineStoreData.writeStream().format("org.elasticsearch.spark.sql")
+				.option("checkpointLocation", "/home/checkpointLocation8").start("online_stores/_doc")
 				.awaitTermination();
 
 	}
