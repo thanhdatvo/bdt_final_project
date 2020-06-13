@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class OnlineStore implements Serializable {
 	private static final long serialVersionUID = 2369441390379166257L;
 	private String eventTime;
-	private String eventType;	
+	private String eventType;
 	private String productId;
 	private String categoryId;
 	private String categoryCode;
@@ -14,14 +14,11 @@ public class OnlineStore implements Serializable {
 	private String userId;
 	private String userSession;
 
-	public OnlineStore(String eventTime
-			,
-			String eventType, String productId, String categoryId, String categoryCode,
-			String brand, String price, String userId, String userSession
-			) {
+	public OnlineStore(String eventTime, String eventType, String productId, String categoryId, String categoryCode,
+			String brand, String price, String userId, String userSession) {
 		super();
-		this.setEventTime(eventTime);
-		this.setEventType(eventType);
+		this.eventTime = eventTime;
+		this.eventType = eventType;
 		this.productId = productId;
 		this.categoryId = categoryId;
 		this.categoryCode = categoryCode;
@@ -30,6 +27,7 @@ public class OnlineStore implements Serializable {
 		this.userId = userId;
 		this.userSession = userSession;
 	}
+
 	public String getEventTime() {
 		return eventTime;
 	}
@@ -101,6 +99,5 @@ public class OnlineStore implements Serializable {
 	public void setUserSession(String userSession) {
 		this.userSession = userSession;
 	}
-	
 
 }
