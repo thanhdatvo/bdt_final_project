@@ -14,3 +14,8 @@
 # Maven
 log/
 target/
+
+JavaRecord.java
+JavaSqlNetworkWordCount.java
+JavaStructuredNetworkWordCount.java
+SparkElasticsearch_old.java
