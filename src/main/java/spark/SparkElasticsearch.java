@@ -47,7 +47,7 @@ public final class SparkElasticsearch {
 		}, onlineStoreEncoder);
 
 		onlineStoreData.writeStream().format("org.elasticsearch.spark.sql")
-				.option("checkpointLocation", "/home/checkpointLocation8").start("online_stores/_doc")
+				.option("checkpointLocation", "/home/checkpointLocation5").start("online_stores/_doc")
 				.awaitTermination();
 
 	}
