@@ -1,65 +1,38 @@
 package spark;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-//import java.time.LocalDateTime;
-//import java.time.format.DateTimeFormatter;
-
-public class OnlineStore implements Serializable {
+public class OnlineStore_new implements Serializable {
 	private static final long serialVersionUID = 2369441390379166257L;
-	private Timestamp eventTime;
+	private String eventTime;
 	private String eventType;
 	private String productId;
 	private String categoryId;
 	private String categoryCode;
 	private String brand;
-	private Double price;
+	private String price;
 	private String userId;
 	private String userSession;
 
-	public OnlineStore(String eventTime, String eventType, String productId, String categoryId, String categoryCode,
+	public OnlineStore_new(String eventTime, String eventType, String productId, String categoryId, String categoryCode,
 			String brand, String price, String userId, String userSession) {
 		super();
-		if (!"".equals(eventTime)) {
-			DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss 'UTC'");
-			LocalDateTime localDate = LocalDateTime.parse(eventTime, formatter);
-			this.eventTime = new Timestamp(localDate.toDateTime().getMillis());
-		}
-
-		if (!"".equals(eventType))
-			this.eventType = eventType;
-
-		if (!"".equals(productId))
-			this.productId = productId;
-
-		if (!"".equals(categoryId))
-			this.categoryId = categoryId;
-
-		if (!"".equals(categoryCode))
-			this.categoryCode = categoryCode;
-
-		if (!"".equals(brand))
-			this.brand = brand;
-
-		if (!"".equals(price))
-			this.price = Double.valueOf(price);
-
-		if (!"".equals(userId))
-			this.userId = userId;
-
-		if (!"".equals(userSession))
-			this.userSession = userSession;
+		this.eventTime = eventTime;
+		this.eventType = eventType;
+		this.productId = productId;
+		this.categoryId = categoryId;
+		this.categoryCode = categoryCode;
+		this.brand = brand;
+		this.price = price;
+		this.userId = userId;
+		this.userSession = userSession;
 	}
 
-	public Timestamp getEventTime() {
+	public String getEventTime() {
 		return eventTime;
 	}
 
-	public void setEventTime(Timestamp eventTime) {
+	public void setEventTime(String eventTime) {
 		this.eventTime = eventTime;
 	}
 
@@ -103,11 +76,11 @@ public class OnlineStore implements Serializable {
 		this.brand = brand;
 	}
 
-	public Double getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
