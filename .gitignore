@@ -22,3 +22,4 @@ SparkElasticsearch_old.java
 OnlineStore_old.java
 OnlineStore_new.java
 Runnable.java
+SparkHive_new.java
