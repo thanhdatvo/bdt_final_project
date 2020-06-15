@@ -36,9 +36,11 @@ public final class Runner {
 					properties[5], properties[6], properties[7], properties[8]);
 		}, onlineStoreEncoder);
 
-		onlineStoreData.writeStream().format("org.elasticsearch.spark.sql")
-				.option("checkpointLocation", "/home/checkpointLocation5").start(topic + "/_doc")
-				.awaitTermination();
+		
+		onlineStoreData.writeStream().foreachBatch((dataset, batchId) -> {
+			dataset.write().format("org.elasticsearch.spark.sql")
+					.option("checkpointLocation", "/home/checkpointLocation5").save(topic + "/_doc");
+		}).start().awaitTermination();
 
 	}
 }
