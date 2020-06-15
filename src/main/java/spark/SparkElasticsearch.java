@@ -39,7 +39,7 @@ public final class SparkElasticsearch {
 		Dataset<Row> lines = spark.readStream().format("socket").option("host", host).option("port", port).load();
 
 		Encoder<OnlineStore> onlineStoreEncoder = Encoders.bean(OnlineStore.class);
-
+		
 		Dataset<OnlineStore> onlineStoreData = lines.as(Encoders.STRING()).map((MapFunction<String, OnlineStore>) x -> {
 			String[] properties = x.split(",");
 			return new OnlineStore(properties[0], properties[1], properties[2], properties[3], properties[4],

@@ -50,7 +50,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>spark.SparkElasticsearch</mainClass>
+							<mainClass>spark.SparkHive</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
