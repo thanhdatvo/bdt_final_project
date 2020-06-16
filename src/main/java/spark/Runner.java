@@ -37,10 +37,45 @@ public final class Runner {
 		}, onlineStoreEncoder);
 
 		
-		onlineStoreData.writeStream().foreachBatch((dataset, batchId) -> {
-			dataset.write().format("org.elasticsearch.spark.sql")
-					.option("checkpointLocation", "/home/checkpointLocation5").save(topic + "/_doc");
-		}).start().awaitTermination();
+		onlineStoreData.writeStream()
+//		.foreachBatch((dataset, batchId)->{
+//			dataset.show();
+//		})
+		.format("org.elasticsearch.spark.sql")
+				.option("checkpointLocation", "/home/checkpointLocation").start(topic + "/_doc")
+				.awaitTermination();
+		
+//		onlineStoreData.toJavaRDD().foreach(rdd -> {
+//			Configuration config = HBaseConfiguration.create();
+//
+//			System.out.println(config.toString());
+//			try (Connection connection = ConnectionFactory.createConnection(config); Admin admin = connection.getAdmin()) {
+//				TableName tableName = TableName.valueOf(TABLE);
+//				HTableDescriptor descriptor = new HTableDescriptor(tableName);
+//				descriptor.addFamily(new HColumnDescriptor(CF_DEFAULT).setCompressionType(Algorithm.NONE));
+//				descriptor.addFamily(new HColumnDescriptor("prof_details"));
+//			
+//				System.out.print("Creating table.... ");
+//				
+//				if (admin.tableExists(tableName)) {
+//					admin.disableTable(tableName);
+//					admin.deleteTable(tableName);
+//				}
+//
+//				admin.createTable(descriptor);
+//				
+//				Table table = connection.getTable(tableName);
+//				
+//				Put p = new Put(Bytes.toBytes("1"));
+//
+//				p.addColumn(Bytes.toBytes(CF_DEFAULT), Bytes.toBytes("Name"), Bytes.toBytes("John"));
+//				p.addColumn(Bytes.toBytes(CF_DEFAULT), Bytes.toBytes("City"), Bytes.toBytes("Boston"));
+//				p.addColumn(Bytes.toBytes("prof_details"), Bytes.toBytes("Designation"), Bytes.toBytes("Manager"));
+//				p.addColumn(Bytes.toBytes("prof_details"), Bytes.toBytes("salary"), Bytes.toBytes("150,000"));
+//				
+//				table.put(p);
+//			}
+//		});
 
 	}
 }
