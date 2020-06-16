@@ -49,4 +49,4 @@ When using maven build, config goals to assembly:single in order to wrap all the
 ## Demo
 *Kafka Spark Elasticsearch Kibana*[https://youtu.be/NUWKg9pQlbY]
 
-*Hive SparkSQL*[https://youtu.be/NUWKg9pQlbY]
+*Hive SparkSQL*[https://youtu.be/NiwcTFCPkw4]

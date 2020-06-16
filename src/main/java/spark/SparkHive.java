@@ -5,7 +5,9 @@ public final class SparkHive {
 
 		SparkSession ss = SparkSession.builder().appName("Java Spark Hive Example")
 				.config("spark.driver.allowMultipleContexts", "true")
-				.config("spark.sql.warehouse.dir", "/user/hive/warehouse").enableHiveSupport().getOrCreate();
+				.config("spark.sql.warehouse.dir", "/user/hive/warehouse")
+				.enableHiveSupport()
+				.getOrCreate();
 		ss.sql("DROP TABLE IF EXISTS test_serializer");
 		ss.sql("CREATE TABLE test_serializer(" 
 				+ " event_time STRING," 
