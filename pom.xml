@@ -63,7 +63,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>spark.Runner</mainClass>
+							<mainClass>spark.SparkHive</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
