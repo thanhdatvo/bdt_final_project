@@ -1,0 +1,7 @@
+CREATE 'ecommerce' 'detail';
+ 
+CREATE EXTERNAL TABLE ecommerce(user_session String,event_time String,event_type String,product_id String,category_id String,category_code String,brand String,price FLOAT,
+user_id String) 
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES ("hbase.columns.mapping" = ":key,detail:event_time,detail:event_type,detail:product_id,detail:category_id,detail:category_code,detail:brand,detail:price,detail:user_id") 
+TBLPROPERTIES ("hbase.table.name" = "ecommerce", "hbase.mapred.output.outputtable" = "ecommerce");

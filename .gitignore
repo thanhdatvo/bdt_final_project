@@ -23,3 +23,7 @@ OnlineStore_old.java
 OnlineStore_new.java
 Runnable.java
 SparkHive_new.java
+SparkHive_old.java
+SparkHive_very_old.java
+MyFirstHbaseTable.java
+JavaSqlNetworkWordCount.java
