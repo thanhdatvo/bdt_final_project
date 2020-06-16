@@ -6,8 +6,6 @@ import java.sql.Timestamp;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-//import java.time.LocalDateTime;
-//import java.time.format.DateTimeFormatter;
 
 public class OnlineStore implements Serializable {
 	private static final long serialVersionUID = 2369441390379166257L;
