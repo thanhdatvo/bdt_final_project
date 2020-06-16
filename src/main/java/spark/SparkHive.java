@@ -1,9 +1,6 @@
 package spark;
-
 import org.apache.spark.sql.SparkSession;
-
 public final class SparkHive {
-
 	public static void main(String[] args) throws Exception {
 
 		SparkSession ss = SparkSession.builder().appName("Java Spark Hive Example")
